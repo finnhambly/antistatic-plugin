@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.4
+
+- A large planner job comes in pages (`antistatic_planner_job` with
+  `page`), so a turn's brief no longer overflows a tool result; the planner
+  agent reads every page.
+- Run questions in the job list their bars by curve, with a period's label
+  and end once.
+
 ## 0.3.3
 
 - The planner reference says how-much bars carry their threshold
