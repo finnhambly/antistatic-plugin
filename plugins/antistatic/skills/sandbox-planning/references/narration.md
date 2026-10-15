@@ -17,4 +17,4 @@ World developments among the observations, in a line or two each. If there are n
 
 What do you do?
 
-Don't write Results or Markets sections: the program adds each action's status and the run questions' results itself. Items of question_results that came up yes or were settled belong in the paragraphs where the story reaches them.
+Don't write Results or Markets sections: the program adds each action's status and the run questions' results itself, Results after your paragraphs and Markets after Elsewhere. Items of question_results that came up yes or were settled belong in the paragraphs where the story reaches them.

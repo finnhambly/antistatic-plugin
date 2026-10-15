@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.3
+
+- The planner reference says how-much bars carry their threshold
+  (`at_least`), that history keeps resolved bars for the latest three
+  turns, and that a client planner's draw call rolls the run questions.
+- The narration reference says where the program puts Results and Markets.
+
 ## 0.3.2
 
 - Installable in Claude Code from the public marketplace
