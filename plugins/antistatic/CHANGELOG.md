@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.5
+
+- The planner reference says a turn job keeps the latest six info answers
+  in full and cuts earlier ones to their first 400 characters.
+
 ## 0.3.4
 
 - A large planner job comes in pages (`antistatic_planner_job` with
