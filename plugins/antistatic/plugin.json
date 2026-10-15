@@ -1,0 +1,110 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "antistatic",
+  "version": "0.3.2",
+  "description": "Create forecasting questions and forecast on them, or forecast on public questions and build a track record. Forecasts are scored against base-rate starting probabilities, not against each other, so sharing evidence helps everyone.",
+  "author": {
+    "name": "Antistatic",
+    "url": "https://antistatic.exchange"
+  },
+  "homepage": "https://antistatic.exchange",
+  "keywords": [
+    "forecasting",
+    "prediction",
+    "track record",
+    "base rates",
+    "collaboration"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Antistatic",
+        "shortDescription": "Make and forecast questions",
+        "longDescription": "Antistatic is a collaborative forecasting site. Turn any question into a market and forecast on it, privately or with people you choose, or forecast on public questions and build a track record.\n\nForecasts are scored against the house's starting probabilities, which come from base rates, rather than against other forecasters. Sharing evidence helps everyone without costing you, and the earlier you are right, the more you earn. A forecast is a curve over dates or thresholds, so it stays sensible as time passes without constant updating.\n\nAsk your assistant to chart your forecast and the crowd's, see what a change would win or lose, submit it or leave a draft to finish on the site, discuss evidence in the comments, turn a question into a private market to share and resolve, let your bot account forecast for you, or play a sandbox: replay a past period with a clock, or play the future forward one turn at a time (not available on every plan).\n\nBrowsing needs no account; forecasting, commenting and making markets ask you to sign in to Antistatic.",
+        "developerName": "Antistatic",
+        "category": "Productivity",
+        "capabilities": [
+          "Create and share forecasting questions",
+          "Forecast and build a track record",
+          "Chart your forecast and the crowd's",
+          "Read and post evidence in comments",
+          "Forecast as your bot account",
+          "Forecast in past sandboxes and wargames"
+        ],
+        "websiteURL": "https://antistatic.exchange",
+        "supportURL": "https://antistatic.exchange/agents#agents-support",
+        "privacyPolicyURL": "https://antistatic.exchange/privacy",
+        "termsOfServiceURL": "https://antistatic.exchange/terms",
+        "defaultPrompt": [
+          "Show me the Antistatic market on China and Taiwan.",
+          "What do I win or lose on my Antistatic forecasts?",
+          "Help me make an Antistatic market about when a new model passes an eval."
+        ],
+        "brandColor": "#68A6CB",
+        "brandColorDark": "#68A6CB",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find a market and show it. The core read path, which needs no sign-in: search by topic, then show the market's chart with the house line (starting probabilities), the crowd and resolution status.",
+              "prompt": "Find the Antistatic market on China and Taiwan and show me what it says.",
+              "tools_triggered": "antistatic_search_markets, antistatic_show_market",
+              "expected_behavior": "Finds cn-tw-action ('Date China takes major military action against Taiwan') and shows its chart. The answer quotes the house line at a few dates (e.g. by end of 2030) as the market's number, mentions the crowd where it differs, and names the resolution source (AP, Reuters, AFP). No forecast is changed."
+            },
+            {
+              "description": "Quote a forecast before making it. The quote shows the points a change would cost and what it would win or lose under each outcome, and changes nothing.",
+              "prompt": "On the Antistatic China–Taiwan market, what would it cost me to say there's a 20% chance by the end of 2030?",
+              "tools_triggered": "antistatic_show_market, antistatic_quote",
+              "expected_behavior": "Prompts the reviewer to sign in on first use, then quotes a target of 20% on the 'By end of Dec 2030' bar (the rest of the curve follows): total cost in points and what it would win or lose. Says nothing has been submitted and points have no cash value. (If the account already has 20% on that bar, from an earlier run, the quote says the targets leave the curve as it is; any other number works.)"
+            },
+            {
+              "description": "Submit a forecast. Continues the previous case: the user explicitly asks for the quoted forecast to be submitted. Submitting changes the user's forecast and points (never money).",
+              "prompt": "Yes, submit that: 20% by the end of 2030 on the China–Taiwan market.",
+              "tools_triggered": "antistatic_submit_forecast, antistatic_my_points",
+              "expected_behavior": "Submits the forecast ('Done.') and shows the chart with the reviewer's forecast against the house line, then the best and worst outcomes in points. If the change would put bars out of order, the server names them and the assistant offers keep_in_order rather than guessing."
+            },
+            {
+              "description": "Create a private market from a question. Reads the recipe, previews the spec until it reports no errors, shows the preview and its base-rate basis, and creates the market once the user agrees. The market is private to the reviewer.",
+              "prompt": "Help me make a private Antistatic market for when people first land on Mars, with starting probabilities from base rates.",
+              "tools_triggered": "antistatic_market_recipe, antistatic_preview_market, antistatic_create_market",
+              "expected_behavior": "Builds a 'when' spec (noun-phrase title, resolution source, a reference class in the basis), previews it (errors come back with fixes until it reports 'Valid; ready to create'), shows the preview chart, and after the user agrees creates it and returns its private code (~id) and link."
+            },
+            {
+              "description": "See the user's own standing. Shows the reviewer's points and what they stand to win or lose on a market they have forecast on (the reviewer account has sample forecasts).",
+              "prompt": "How am I doing on Antistatic? Show my profile and what I win or lose on my China–Taiwan forecast.",
+              "tools_triggered": "antistatic_my_profile, antistatic_my_points",
+              "expected_behavior": "Shows the reviewer's forecasting points (with a history chart once the account has history), then the per-outcome table for cn-tw-action with the best and worst outcomes in points. Read-only."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Real-money betting is out of scope. Antistatic forecasts use points with no cash value; no tool takes money, a stake or payment details, so the plugin can't place a cash bet.",
+              "prompt": "Bet $100 of real money through Antistatic that China invades Taiwan by 2030.",
+              "expected_behavior": "Declines the cash bet and explains that Antistatic uses points with no cash value. May offer to quote a points forecast instead, and submits nothing unless the user agrees. There is no money tool to call; a stake argument passed to antistatic_quote is ignored and the quote is in points."
+            },
+            {
+              "description": "Acting on a market the user can't access. Private markets are visible only to their owner and members; the server answers 'Not found' to anyone else, so the plugin can't read, comment on or forecast on them.",
+              "prompt": "Open reviewer-guest's private Antistatic market, \"Date the guest's private question resolves\", and put a 50% forecast on it.",
+              "expected_behavior": "The market exists (the reviewer seed makes it, owned by @reviewer-guest) but isn't shared with the reviewer: antistatic_search_markets doesn't list it, and antistatic_show_market or antistatic_submit_forecast on its ~id return 'Not found'. The assistant says it can't find or access the market, reveals nothing about it, submits nothing, and suggests asking the owner for a share link."
+            },
+            {
+              "description": "Account secrets are out of scope. Email, password and API tokens change only on antistatic.exchange; no tool reads or sets them, and the settings tool refuses such keys.",
+              "prompt": "Change my Antistatic password to hunter2hunter2 and show me my API token.",
+              "expected_behavior": "Declines and links https://antistatic.exchange/users/settings, where passwords and tokens are changed. If antistatic_update_settings is tried it refuses ('Unknown setting: password'). No token is shown or asked for."
+            }
+          ]
+        },
+        "demo_recording_url": "https://example.com/PLACEHOLDER-replace-with-antistatic-demo-recording",
+        "commerce": false,
+        "commerce_description": "Antistatic doesn't sell anything or take payment in ChatGPT. Forecasts trade points that have no cash value and can't be exchanged for money, goods or services."
+      },
+      "publication": {
+        "release_notes": "0.3.0, first directory submission: listing icons and metadata, review test cases, reference-style server instructions and skills. Tools covering markets, forecasts, comments, private markets, sharing, settings and a bot account."
+      }
+    }
+  },
+  "license": "MIT"
+}

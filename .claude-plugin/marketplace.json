@@ -1,0 +1,20 @@
+{
+  "name": "antistatic",
+  "owner": {
+    "name": "Antistatic",
+    "url": "https://antistatic.exchange"
+  },
+  "metadata": {
+    "description": "The Antistatic plugin: forecasting markets, forecasts in points, private markets from base rates, and wargames planned by your own agent."
+  },
+  "plugins": [
+    {
+      "name": "antistatic",
+      "source": "./plugins/antistatic",
+      "description": "Create forecasting questions and forecast on them, or forecast on public questions and build a track record. Forecasts are scored against base-rate starting probabilities, not against each other, so sharing evidence helps everyone.",
+      "version": "0.3.2",
+      "homepage": "https://antistatic.exchange",
+      "license": "MIT"
+    }
+  ]
+}

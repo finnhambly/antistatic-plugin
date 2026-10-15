@@ -1,0 +1,19 @@
+{
+  "name": "antistatic",
+  "displayName": "Antistatic",
+  "version": "0.3.2",
+  "description": "Create forecasting questions and forecast on them, or forecast on public questions and build a track record. Forecasts are scored against base-rate starting probabilities, not against each other, so sharing evidence helps everyone.",
+  "author": {
+    "name": "Antistatic",
+    "url": "https://antistatic.exchange"
+  },
+  "homepage": "https://antistatic.exchange",
+  "keywords": [
+    "forecasting",
+    "prediction",
+    "track record",
+    "base rates",
+    "collaboration"
+  ],
+  "license": "MIT"
+}

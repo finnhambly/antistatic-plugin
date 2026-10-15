@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "antistatic": {
+      "type": "http",
+      "url": "https://antistatic.exchange/mcp"
+    }
+  }
+}

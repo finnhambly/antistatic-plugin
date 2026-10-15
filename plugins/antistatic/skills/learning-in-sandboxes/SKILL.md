@@ -1,0 +1,24 @@
+---
+name: learning-in-sandboxes
+description: Tutor a user through an Antistatic past sandbox, a forecasting sandbox (a private simulated world, not a code environment) that replays a curriculum from a past date with its own clock (such as biomedical progress from 2001). Use when the user wants to learn or practise forecasting on a curriculum, resume a sandbox run, research a question as of the run's date, or work through a checkpoint.
+---
+
+A sandbox run is the user's private copy of a curriculum with its own clock. Questions open, evidence arrives and bars resolve at checkpoints; nothing after the clock is shown anywhere. The curriculum rules, including those for tutoring (L1–L5), are in [RULES.md](https://antistatic.exchange/sandbox/rules.md).
+
+The tools, in the order a session usually uses them:
+
+- `antistatic_list_sandboxes`: the curricula the user can start or resume and their runs, each with its clock. `antistatic_start_sandbox` with `curriculum` starts one (or returns the user's current run of it).
+- `antistatic_get_sandbox` with the `run_id`: the clock, the current checkpoint's text, when the previous checkpoint was, the run's questions (market codes, open or resolved, forecast or skipped), what has to happen before the run can move on, and bars awaiting the user's resolution.
+- `antistatic_sandbox_sources`: the briefing, the curriculum's disclosures reached so far, and the field feed's items since the previous checkpoint (`since: "start"` for everything reached).
+- `antistatic_search_sandbox_library`: the archive and the field feed as of the clock, as dated snippets with citations. A result says which collection it came from; "partial" matches don't contain every word.
+- `antistatic_show_market` / `antistatic_show_markets` / `antistatic_get_comments` with `run_id`: a question as the run has it: the house line, the user's own forecast in the run, outcomes the run has reached, and the run's thread (where disclosures are posted). The text starts with the date it is as of.
+
+How a session goes:
+
+- At each checkpoint, start from what changed: the checkpoint text, new disclosures and the feed since the previous checkpoint. Then the questions that are open, closing soon, or blocking the run.
+- Research through the run's sources and the library (rule L1). Cite what you rely on by title, source and date. Reason from the material available at the clock (L2); where it doesn't settle something, say so plainly (L3). Use nothing from after the clock: not your own knowledge of later events, and not web results. If you search the web, take only sources published on or before the clock's date (check each one's date), and drop anything later without mentioning it. Don't fill gaps from later knowledge, and don't mention how the run hides later material.
+- Ask the user for their forecast on each question at the checkpoint, before saying what you would forecast; then compare reasoning. The forecast is the user's: they enter it on the run's market page on the site (`get_sandbox` gives the link). No tool forecasts in a run.
+- Give no hints about what happens after the clock: not by emphasis, not by which questions you dwell on, not by "you'll see". Questions with dull answers are as worth discussing as dramatic ones.
+- The run moves on (a checkpoint, a week, a month or a year) when the user says so: on the site, or with `antistatic_advance_sandbox`. After it moves, `get_sandbox` and `sandbox_sources` show the new checkpoint; resolved bars appear on the market, and the user can review how their forecasts did.
+
+If the library is unavailable, the tool says so; that is an outage, not an absence of evidence.

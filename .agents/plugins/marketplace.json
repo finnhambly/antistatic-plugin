@@ -1,0 +1,20 @@
+{
+  "name": "antistatic",
+  "interface": {
+    "displayName": "Antistatic"
+  },
+  "plugins": [
+    {
+      "name": "antistatic",
+      "source": {
+        "source": "local",
+        "path": "./plugins/antistatic"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
