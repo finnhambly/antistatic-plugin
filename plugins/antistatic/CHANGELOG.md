@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.6
+
+- A draw is tied to an action only when yes means the player carried it
+  out; others' responses to an action are untied, so they no longer turn a
+  done action into slipped.
+- Settling a run question yes takes the day it happened, the same date as
+  the observation that narrates it.
+- The world snapshot describes the real world: the planner leans on it less,
+  or not at all, once the scenario has moved far from reality.
+
 ## 0.3.5
 
 - The planner reference says a turn job keeps the latest six info answers
