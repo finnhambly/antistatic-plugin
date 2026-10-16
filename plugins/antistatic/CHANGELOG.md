@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.11
+
+- Private wargames (end-to-end encrypted): `scripts/antistatic-private.mjs`
+  encrypts every call for the run with the user's key, unlocked by a
+  generated 6-word recovery phrase (`init` prints it once). Each tool's
+  fields follow a fixed schema (`scripts/private-fields.json`); arguments
+  go on stdin. Units are encrypted too, around the plain X. The
+  `private-sandbox` skill says how. The planner agent uses
+  it for private runs.
+
 ## 0.3.10
 
 - Run when-items that tend to happen together (or apart) without ruling each
