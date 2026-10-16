@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.8
+
+- A value an info answer or observation fixes (savings on a date) anchors
+  the roll of the how-much question that tracks it: `adjust` takes `value`,
+  `at` and `evidence` for a how-much question.
+
 ## 0.3.7
 
 - A new run question is priced as of the turn's end, taking in that turn's
