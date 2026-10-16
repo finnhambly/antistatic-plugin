@@ -136,7 +136,7 @@
       "set_until": {"object": {"date": "date", "reason": "text"}},
       "draw": {"object": {"action": "text", "label": "text", "basis": "text", "p": "number", "visible": "bool"}},
       "sample": {"object": {"action": "text", "label": "text", "basis": "text", "visible": "bool", "outcomes": {"array": {"object": {"outcome": [{"enum": ["done", "partly", "slipped", "unknown"]}, "text"], "p": "number"}}}}},
-      "adjust": {"object": {"action": "text", "basis": "text", "factor": "number", "item": "key", "market": "run_question", "value": "number", "at": "date", "evidence": ["observation", "text"],
+      "adjust": {"object": {"action": "text", "basis": "text", "factor": "number", "item": "key", "market": "run_question", "value": "number", "at": "date", "evidence": ["observation", "text"], "lasting": "bool", "shift": "number", "noise": "number",
         "given": {"object": {"market": "run_question", "item": "key", "outcome": {"enum": ["yes", "no"]}, "keep_marginal": "bool"}}}},
       "settle_item": {"object": {"basis": "text", "date": "date", "evidence": ["observation", "text"], "item": "key", "market": "run_question", "outcome": {"enum": ["yes", "no", "not_before"]}}},
       "correlate": {"object": {"basis": "text", "market": "run_question", "item": "key", "with": "run_question", "with_item": "key", "rho": "number", "lift": "number", "by": "date", "remove": "bool"}},
@@ -144,7 +144,7 @@
       "import_question": {"object": {"from_run_id": "int", "code": "run_question"}},
       "create_question": {"object": {"draw": {"object": {"basis": "text", "p": "number", "visible": "bool"}}, "spec": {"ref": "spec"}}},
       "extend_question": {"object": {"market": "run_question", "to": "date", "anchors": {"ref": "anchors"}, "basis": {"ref": "basis"}, "thresholds": {"object": {"from": "number", "to": "number"}}}},
-      "add_item": {"object": {"market": "run_question", "key": "key", "label": "text", "anchors": {"array": ["when_anchor", "how_much_anchor"]}, "basis": {"ref": "basis"}}}
+      "add_item": {"object": {"market": "run_question", "key": "key", "label": "text", "player_choice": "bool", "anchors": {"array": ["when_anchor", "how_much_anchor"]}, "basis": {"ref": "basis"}}}
     }}
   },
   "tools": {
@@ -165,7 +165,7 @@
       "pace": {"enum": ["auto", "days", "week", "month", "quarter"]},
       "characters": {"array": {"ref": "character_change"}}
     },
-    "antistatic_get_sandbox": {"run_id": "int", "character": "char", "turns": ["int", "turns"], "include_audit": "bool"},
+    "antistatic_get_sandbox": {"run_id": "int", "character": "char", "turns": ["int", "turns"], "include_audit": "bool", "script": ["int", {"enum": ["latest"]}]},
     "antistatic_wait_sandbox": {"run_id": "int", "character": "char", "since": "version", "wait_seconds": "int"},
     "antistatic_show_turn_status": {"run_id": "int", "character": "char"},
     "antistatic_sandbox_sources": {"run_id": "int", "limit": "int", "since": ["date", {"enum": ["previous", "start"]}]},
@@ -175,7 +175,7 @@
     },
     "antistatic_ask_sandbox": {"run_id": "int", "character": "char", "entries": {"array": {"ref": "ask_entry"}}},
     "antistatic_submit_orders": {"run_id": "int", "character": "char", "submit": "bool", "entries": {"array": {"ref": "order_entry"}}},
-    "antistatic_correct_sandbox": {"run_id": "int", "strike": "observation", "reason": "text", "fact": "text"},
+    "antistatic_correct_sandbox": {"run_id": "int", "strike": "observation", "reopen": "run_question", "item": "key", "reason": "text", "fact": "text"},
     "antistatic_set_sandbox_goal": {"run_id": "int", "code": "run_question", "liquidity": "int", "remove": "bool"},
     "antistatic_advance_sandbox": {"run_id": "int", "by": {"enum": ["week", "month", "year"]}},
     "antistatic_rename_sandbox": {"run_id": "int", "name": "text"},

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.12
+
+- `adjust` updates any run question's house line, every turn the story moves
+  it: `lasting` reprices a when-item's later chances; a how-much `value` with
+  `at` anchors a period or, mid-period, is a reading (`noise`); `shift` moves
+  the outlook with no new data. Linked questions move with it, whatever their
+  periods. Persistence is the planner's, per question (spec `persistence`, or
+  `correlate` without `with`).
+- `player_choice` marks a question or item that is the player's own decision:
+  never rolled, adjusted or drawn; settled only on their word.
+- `antistatic_correct_sandbox` `reopen` undoes a wrong settlement.
+- `antistatic_get_sandbox` `script` returns a turn's script verbatim.
+- `antistatic_wait_sandbox` waits at most 45 seconds.
+
 ## 0.3.11
 
 - Private wargames (end-to-end encrypted): `scripts/antistatic-private.mjs`
