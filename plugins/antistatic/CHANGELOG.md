@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.7
+
+- A new run question is priced as of the turn's end, taking in that turn's
+  events, and leaves out items the turn has already ruled out (a candidate
+  who withdrew), since it is first rolled next turn.
+
 ## 0.3.6
 
 - A draw is tied to an action only when yes means the player carried it
