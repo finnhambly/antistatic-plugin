@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.9
+
+- Run when-questions can be linked so their rolls stay consistent: `link`
+  makes items exclusive (at most one ever happens; once one does, the rest
+  resolve no) or makes one require another (it can't happen first). `adjust`
+  takes `given`, so a factor applies only when another item's roll this turn
+  comes out a set way, with the other branch compensating so the item keeps
+  its house chance.
+
 ## 0.3.8
 
 - A value an info answer or observation fixes (savings on a date) anchors
