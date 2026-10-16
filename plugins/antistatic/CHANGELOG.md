@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.10
+
+- Run when-items that tend to happen together (or apart) without ruling each
+  other out can be correlated: `correlate` takes two items, a `lift` (how many
+  times likelier both are by `by` than if independent) and the horizon `by`.
+  Each item keeps its own curve; when one happens, the other's chances in later
+  turns move with it. Lifts the two chances can't give are refused, as are items
+  in an exclusive group, a requires link or a given adjustment.
+
 ## 0.3.9
 
 - Run when-questions can be linked so their rolls stay consistent: `link`
