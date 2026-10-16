@@ -1,5 +1,5 @@
-// Private wargames' crypto, format 2 (docs/private-mode.md). Shared by the
-// private CLI (antistatic-private.mjs) and the browser (assets/js/e2e_crypto.js).
+// Encrypted wargames' crypto, format 2 (docs/encrypted-wargames.md). Shared by the
+// CLI (antistatic-encrypted.mjs) and the browser (assets/js/e2e_crypto.js).
 // WebCrypto only: globalThis.crypto (the CLI sets it on Node 18).
 //
 // phrase  6 EFF words, compared without hyphens, joined by spaces (recovery-phrase.mjs)
@@ -218,7 +218,7 @@ export async function newSetup(userId, iterations = ITERATIONS) {
 // The content keys for a typed phrase and the server's setup ({user_id,
 // salt, wrapped, check, version}). Throws Error with a short message.
 export async function unlockRaw(input, setup, iterations = ITERATIONS) {
-  if (setup?.version !== FORMAT) throw new Error(`Unknown private-mode format ${setup?.version}`);
+  if (setup?.version !== FORMAT) throw new Error(`Unknown encryption format ${setup?.version}`);
   const parsed = parsePhrase(input);
   if (parsed.error) throw new Error(parsed.error);
   let master;

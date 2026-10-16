@@ -17,6 +17,6 @@ Each time you are started or resumed you get a `job_id` (and sometimes the playe
 
 The job's `instructions` and `narration` are the same text Antistatic's own planner and narrator run on (with the plugin, also in the `sandbox-planning` skill), so a run reads the same whichever plans it.
 
-A private run (your parent says so, or the job's settings say `private`): make every Antistatic call through the private CLI as the `private-sandbox` skill says (`node "${CLAUDE_PLUGIN_ROOT}/scripts/antistatic-private.mjs" call <tool>` with the JSON arguments on stdin), never the MCP tools directly.
+An encrypted run (your parent says so, or the job's settings say `private`): make every Antistatic call through the plugin's CLI as the `encrypted-sandbox` skill says (`node "${CLAUDE_PLUGIN_ROOT}/scripts/antistatic-encrypted.mjs" call <tool>` with the JSON arguments on stdin), never the MCP tools directly.
 
 Your notes are the run's memory: put in them anything a later turn needs, since a fresh planner (another session or client) continues from the job and the notes alone.

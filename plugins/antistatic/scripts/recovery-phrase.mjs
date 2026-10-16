@@ -2,7 +2,7 @@
 // list (wordlist.mjs: 7776 words, 77.5 bits), shown lowercase with spaces
 // between them (four list words have hyphens, such as t-shirt). Generated on the
 // user's device; never sent. Users don't pick their own. Shared by the
-// private CLI (antistatic-private.mjs) and the browser, via private-crypto.mjs.
+// CLI (antistatic-encrypted.mjs) and the browser, via private-crypto.mjs.
 import { WORDS } from "./wordlist.mjs";
 
 export const PHRASE_WORDS = 6;

@@ -107,7 +107,7 @@ export async function walk(node, value, path, leaf, siblings = null, schema = SC
   const out = {};
   for (const [k, v] of Object.entries(value)) {
     const field = n.object[k];
-    if (field === undefined) throw new Error(`${path}.${k}: not a field private runs take`);
+    if (field === undefined) throw new Error(`${path}.${k}: not a field encrypted runs take`);
     if (resolve(field, schema).kind === "drop") continue;
     out[k] = await walk(field, v, `${path}.${k}`, leaf, value, schema);
   }
@@ -167,7 +167,7 @@ async function encryptLine(encrypt, line) {
 // runs don't take.
 export async function encryptCall(tool, args, encrypt, opaque, schema = SCHEMA) {
   const node = toolNode(tool, schema);
-  if (!node) throw new Error(`${tool} isn't available for private runs.`);
+  if (!node) throw new Error(`${tool} isn't available for encrypted runs.`);
   // market_code is read as code, as the server does (Tools.prepare_args/2).
   const fields = (node.ref ? schema.types[node.ref] : node).object;
   if (fields?.code && args?.market_code !== undefined && args.code === undefined) {

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.13
+
+- Private wargames are now called encrypted wargames: the
+  `encrypted-sandbox` skill (was `private-sandbox`) and
+  `scripts/antistatic-encrypted.mjs` (`antistatic-private.mjs` still works).
+
 ## 0.3.12
 
 - `adjust` updates any run question's house line, every turn the story moves
