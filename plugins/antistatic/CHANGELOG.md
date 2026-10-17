@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.14
+
+- Encrypted wargames go through the `antistatic` command
+  (`brew install finnhambly/tap/antistatic`, 0.7.0 or later):
+  `antistatic encrypt` logs in with the browser, then sets up or unlocks;
+  `antistatic call <tool>` makes each call. The `encrypted-sandbox` skill,
+  the wargame skill and the planner use it.
+
 ## 0.3.13
 
 - Private wargames are now called encrypted wargames: the
