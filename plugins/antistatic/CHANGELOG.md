@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.22
+
+- Wargame wrap-up: the forecasts section is in points, not Brier: what
+  your forecasts made or lost against the house on resolved bars, with the
+  calls that made the most and lost the most.
+
 ## 0.3.21
 
 - Wargame goals score against their questions' opening lines, settled
