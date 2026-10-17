@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.18
+
+- Planner: the job's `to_roll` lists what the turn rolls, each when item's
+  chance this turn (`jump` where its hazard is over 3x last turn's) and each
+  how-much period's median. The planner checks them and adjusts before the
+  roll; an adjust's result gives the item's new chance.
+
 ## 0.3.17
 
 - Wargame goals score the outcome against a baseline frozen when the goal
