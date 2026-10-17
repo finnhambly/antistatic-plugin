@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.3.15
+
+- Encrypted wargames: goals take `market_code` or `code`; `player_choice`
+  and `persistence` work in specs and items; an item may carry its own
+  `anchors`; periods and anchors take quarters (`2026-Q4`) and months
+  (`Oct 2026`). The `encrypted-sandbox` skill shows each common call's
+  argument shape and asks for `antistatic unlock` only when locked (CLI
+  0.7.3 or later).
+- Planner: staged questions, items and extensions that can't be made are
+  refused when drawn, or reported in the turn's result; never dropped.
+  Each plan branch may carry its own `adjust`, applied after the roll if
+  that branch is chosen. `shift` is a level move that fades with
+  persistence; links chain; `correlate` pairs a when-item with a how-much
+  question. Jobs last four hours, longer while in use.
+- Turns: the planner's action status stands unless a draw contradicts it;
+  a feed's `settle` shows in the turn; `reopen` removes the fact that
+  settled the item; each item that moved has its own label.
+- Claude Code install: `/plugin marketplace add finnhambly/antistatic-plugin`,
+  then `/plugin install antistatic@antistatic`.
+
 ## 0.3.14
 
 - Encrypted wargames go through the `antistatic` command

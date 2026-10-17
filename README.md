@@ -9,14 +9,12 @@ markets from base rates, and wargames whose turns your own agent plans.
 **Claude Code:**
 
 ```
-/plugin install antistatic --marketplace finnhambly/antistatic-plugin
+/plugin marketplace add finnhambly/antistatic-plugin
+/plugin install antistatic@antistatic
 ```
 
-`/plugin marketplace update antistatic` picks up new versions. On older
-Claude Code, add the marketplace first:
-`/plugin marketplace add finnhambly/antistatic-plugin`, then
-`/plugin install antistatic@antistatic`. Run `/mcp` and choose antistatic to
-sign in. Use the plugin or the connector, not both.
+`/plugin marketplace update antistatic` picks up new versions. Run `/mcp` and
+choose antistatic to sign in. Use the plugin or the connector, not both.
 
 **Codex:** `codex plugin marketplace add finnhambly/antistatic-plugin`, then
 `/plugins` in Codex to install it. `codex plugin marketplace upgrade antistatic`

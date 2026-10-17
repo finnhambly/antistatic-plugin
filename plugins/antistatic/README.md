@@ -31,7 +31,8 @@ token to copy.
 - **Claude:** install this plugin, or add `https://antistatic.exchange/mcp`
   under Customize → Connectors → Add custom connector.
 - **Claude Code:** install this plugin with
-  `/plugin install antistatic --marketplace finnhambly/antistatic-plugin`, then
+  `/plugin marketplace add finnhambly/antistatic-plugin` and
+  `/plugin install antistatic@antistatic`, then
   `/mcp` to sign in. Or add the server alone (not both):
   `claude mcp add --transport http antistatic https://antistatic.exchange/mcp`.
 - **ChatGPT:** install this plugin, or add the address as a plugin in

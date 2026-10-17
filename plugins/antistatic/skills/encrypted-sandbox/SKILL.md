@@ -7,9 +7,10 @@ Encrypted wargames' text is encrypted on your device before upload. Our servers 
 
 ## Steps
 
-1. Check: `antistatic status --json`. Its `state` is `not_logged_in`, `not_set_up`, `locked` or `unlocked`.
+1. Check once per session: `antistatic status --json`. Its `state` is `not_logged_in`, `not_set_up`, `locked` or `unlocked`. Unlocking lasts on this machine until `antistatic lock` or logout, so `unlocked` needs nothing from the user.
    - Command not found: ask the user to run `brew install finnhambly/tap/antistatic`, then `antistatic encrypt`, in their own terminal.
-   - Anything but `unlocked`: ask them to run `antistatic encrypt` in their own terminal. It logs in with the browser, then sets up (shows a 6-word recovery phrase once and asks for words 2 and 5) or unlocks (asks for the phrase).
+   - `not_logged_in` or `not_set_up`: ask them to run `antistatic encrypt` in their own terminal (it logs in with the browser, then sets up: a 6-word recovery phrase shown once, words 2 and 5 retyped).
+   - `locked`: say "Run `antistatic unlock` in your terminal, then tell me."
 
    Then wait for them to say it's done. Never ask for, type or handle their recovery phrase, and never run `antistatic encrypt`, `unlock` or `login` yourself.
 2. Start the run:
@@ -19,9 +20,22 @@ Encrypted wargames' text is encrypted on your device before upload. Our servers 
    EOF
    ```
 3. Play as in the wargame skill, with every call for this run, yours and the planner's, made through `antistatic call <tool>`, its JSON arguments on stdin (a quoted heredoc as above; or `@file.json`), named as the tool's schema names them (`market_code` or `code` for a run question). Never call the antistatic MCP tools for an encrypted run, and never put arguments on the command line. The output is the tool's text, decrypted; `--json` prints its structured data.
-4. Encrypted runs are client-planned: when take_turn returns a planner job, spawn the sandbox-planner subagent and tell it the run is encrypted (private), so it uses `antistatic call` too.
+4. Encrypted runs are client-planned: when take_turn returns a planner job, spawn the sandbox-planner subagent and tell it the run is encrypted (private), so it uses `antistatic call` too. Its job's `world_snapshot` is empty: encrypted runs don't read the live markets.
 
-Exit codes of `antistatic call`: 3 not logged in, 4 not set up, 5 locked (ask the user to run `antistatic encrypt`, then retry); 2 the arguments don't fit (fix them); 6 the tool refused the call (its message is on stderr).
+## Argument shapes
+
+Arguments are the tool's own, as JSON on stdin. The common ones:
+
+- `antistatic_start_sandbox`: `{"private": true, "title": "...", "premise": "...", "ends_on": "2027-12-31"}`
+- `antistatic_take_turn`: `{"run_id": 59, "turn_id": "<a UUID you choose; resend the same one to retry>", "entries": [{"type": "action", "text": "..."}]}`
+- `antistatic_preview_market`, `antistatic_create_market`: `{"run_id": 59, "spec": {"question": "when", "title": "...", "horizon": {"end": "2027-12"}, "items": [{"key": "cuf", "label": "...", "player_choice": true}], "anchors": {"cuf": [{"by": "2027-Q2", "p": 0.4}]}, "basis": {...}, "resolution": {...}}}`. The spec goes inside `spec`, beside `run_id`. An item may carry its own `anchors` instead.
+- `antistatic_set_sandbox_goal`: `{"run_id": 59, "market_code": "p59-1", "liquidity": 300}`
+- `antistatic_get_sandbox`: `{"run_id": 59}`; `antistatic_show_market`: `{"run_id": 59, "market_code": "p59-1"}`
+- Planner: `antistatic_planner_job` `{"job_id": "pj_..."}`; `antistatic_planner_draw` `{"job_id": "pj_...", "events": [{"tool": "add_item", "input": {...}}]}`; `antistatic_submit_plan` `{"job_id": "pj_...", "plan": {...}}`; `antistatic_submit_script` `{"job_id": "pj_...", "script": "..."}`
+
+Dates are `YYYY`, `YYYY-MM`, `YYYY-MM-DD`; periods and anchors also take quarters (`2026-Q4`) and months (`Oct 2026`). When `antistatic call` refuses an argument (exit 2) it prints the shape it expects.
+
+Exit codes of `antistatic call`: 3 not logged in or 4 not set up (ask the user to run `antistatic encrypt`), 5 locked (ask them to run `antistatic unlock`), then retry; 2 the arguments don't fit (fix them); 6 the tool refused the call (its message is on stderr).
 
 ## What gets encrypted
 

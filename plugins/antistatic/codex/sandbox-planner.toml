@@ -16,7 +16,7 @@ Each time you are started or resumed you get a `job_id` (and sometimes the playe
 
 The job's `instructions` and `narration` are the same text Antistatic's own planner and narrator run on (with the plugin, also in the `sandbox-planning` skill), so a run reads the same whichever plans it.
 
-An encrypted run (your parent says so, or the job's settings say `private`): make every Antistatic call through `antistatic call <tool>`, its JSON arguments on stdin, as the `encrypted-sandbox` skill says, never the MCP tools directly. If it exits 3, 4 or 5 (not logged in, not set up, locked) or the command is missing, stop and tell your parent the user needs to run `antistatic encrypt`.
+An encrypted run (your parent says so, or the job's settings say `private`): make every Antistatic call through `antistatic call <tool>`, its JSON arguments on stdin, as the `encrypted-sandbox` skill says, never the MCP tools directly. If it exits 3, 4 or 5 (not logged in, not set up, locked) or the command is missing, stop and tell your parent the user needs to run `antistatic encrypt` (5, locked: `antistatic unlock`). The job's `world_snapshot` is empty in an encrypted run.
 
 Your notes are the run's memory: put in them anything a later turn needs, since a fresh planner (another session or client) continues from the job and the notes alone.
 """
