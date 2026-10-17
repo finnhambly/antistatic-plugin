@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.16
+
+- Encrypted wargames: each piece of text is encrypted with a fresh nonce
+  and bound to the account, the run (and its forks) and its field; text
+  that fails to decrypt shows as "⚠ Unreadable". Needs CLI 0.7.4 or later
+  (`brew upgrade finnhambly/tap/antistatic`); runs made before can't be
+  read.
+
 ## 0.3.15
 
 - Encrypted wargames: goals take `market_code` or `code`; `player_choice`

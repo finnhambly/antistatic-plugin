@@ -45,7 +45,7 @@ Exit codes of `antistatic call`: 3 not logged in or 4 not set up (ask the user t
 
 Each tool's fields follow a fixed schema; `antistatic call` refuses a tool or field it doesn't list, and the server refuses unencrypted text.
 
-- Encrypted: all prose, names, character keys, your question codes and item keys. The same text always encrypts the same way, so reuse codes and keys verbatim.
+- Encrypted: all prose, names, character keys, your question codes and item keys. Each piece is encrypted afresh but matched by its text within a run and its forks, so reuse codes and keys verbatim. A run's text reads only in that run and its forks; text that fails to decrypt shows as "⚠ Unreadable".
 - Plain: enums, dates, numbers and server-issued ids (run, job and observation ids, run question codes such as p12-3, character ids such as c2).
 - Units: give them as usual ("£Xk", "%", "pence per litre"); their text is encrypted and only the X (and a % after it) stays plain.
 - `turn_id` is replaced by an opaque id.
