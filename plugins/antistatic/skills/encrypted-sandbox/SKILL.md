@@ -29,7 +29,7 @@ Arguments are the tool's own, as JSON on stdin. The common ones:
 - `antistatic_start_sandbox`: `{"private": true, "title": "...", "premise": "...", "ends_on": "2027-12-31"}`
 - `antistatic_take_turn`: `{"run_id": 59, "turn_id": "<a UUID you choose; resend the same one to retry>", "entries": [{"type": "action", "text": "..."}]}`
 - `antistatic_preview_market`, `antistatic_create_market`: `{"run_id": 59, "spec": {"question": "when", "title": "...", "horizon": {"end": "2027-12"}, "items": [{"key": "cuf", "label": "...", "player_choice": true}], "anchors": {"cuf": [{"by": "2027-Q2", "p": 0.4}]}, "basis": {...}, "resolution": {...}}}`. The spec goes inside `spec`, beside `run_id`. An item may carry its own `anchors` instead.
-- `antistatic_set_sandbox_goal`: `{"run_id": 59, "market_code": "p59-1", "liquidity": 300}`
+- `antistatic_set_sandbox_goal`: `{"run_id": 59, "market_code": "p59-1", "tier": "terminal", "valence": "higher", "liquidity": 300}`
 - `antistatic_get_sandbox`: `{"run_id": 59}`; `antistatic_show_market`: `{"run_id": 59, "market_code": "p59-1"}`
 - Planner: `antistatic_planner_job` `{"job_id": "pj_..."}`; `antistatic_planner_draw` `{"job_id": "pj_...", "events": [{"tool": "add_item", "input": {...}}]}`; `antistatic_submit_plan` `{"job_id": "pj_...", "plan": {...}}`; `antistatic_submit_script` `{"job_id": "pj_...", "script": "..."}`
 

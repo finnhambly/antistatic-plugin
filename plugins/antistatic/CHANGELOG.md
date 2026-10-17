@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.17
+
+- Wargame goals score the outcome against a baseline frozen when the goal
+  is set: each goal has a valence (higher, lower, sooner, later, neutral or
+  a target range) and a tier (terminal or instrumental). The run shows
+  `Outcome +23 · 70% settled` for terminal goals and `Means` for
+  instrumental ones; forecasting is optional. Corrections after a turn, or
+  once an outcome is known, are shown as restatements. God mode shows the score unscored;
+  each mortal stretch is its own segment.
+- Planner: `adjust` takes `research` (new anchors with a basis) to refit a
+  house line's open periods, conditioned on what has settled; linked
+  questions follow. The sandbox-planning skill says when to use a shift, a
+  value pin or re-research.
+- Encrypted wargames need CLI 0.7.5 or later.
+
 ## 0.3.16
 
 - Encrypted wargames: each piece of text is encrypted with a fresh nonce
