@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.20
+
+- Instrumental goals score 0 to 100 (`Instrumental score: 62/100`): their
+  outcomes' percentile under the baseline, 50 as expected, 100 the best
+  possible. Rarities read `A 1 in 5 outcome`.
+
 ## 0.3.19
 
 - Wargame outcome score by rarity: each terminal goal's outcome pays 1 in N

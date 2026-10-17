@@ -12,7 +12,7 @@
       "name": "antistatic",
       "source": "./plugins/antistatic",
       "description": "Create forecasting questions and forecast on them, or forecast on public questions and build a track record. Forecasts are scored against base-rate starting probabilities, not against each other, so sharing evidence helps everyone.",
-      "version": "0.3.19",
+      "version": "0.3.20",
       "homepage": "https://antistatic.exchange",
       "license": "MIT"
     }
