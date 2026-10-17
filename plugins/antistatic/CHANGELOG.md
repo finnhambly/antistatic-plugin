@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.21
+
+- Wargame goals score against their questions' opening lines, settled
+  outcomes included; a goal set after the first turn shows `set at turn N`.
+
 ## 0.3.20
 
 - Instrumental goals score 0 to 100 (`Instrumental score: 62/100`): their
