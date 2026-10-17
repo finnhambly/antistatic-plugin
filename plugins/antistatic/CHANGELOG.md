@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.25
+
+- Wargame planning: any change to a run question's line moves its linked
+  questions, chained, this turn's rolls included; adjust results list them.
+
 ## 0.3.24
 
 - Curriculum authoring: new curricula are admin-only for now.
