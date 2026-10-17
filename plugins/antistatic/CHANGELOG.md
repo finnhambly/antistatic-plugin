@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.23
+
+- Rarities read by runs: `1 in 23 runs go this well`, `3 in 10 runs go
+  this well`, `Half of runs go this well`.
+
 ## 0.3.22
 
 - Wargame wrap-up: the forecasts section is in points, not Brier: what
