@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.19
+
+- Wargame outcome score by rarity: each terminal goal's outcome pays 1 in N
+  under its baseline, and the run scores how rare its weighted payoff is
+  (`Outcome 23 · 40% settled · 1 in 5`: 0 the worst, 10 as expected, 100
+  one in 1,000, no ceiling). The means keep the -100 to +100 rank.
+
 ## 0.3.18
 
 - Planner: the job's `to_roll` lists what the turn rolls, each when item's
