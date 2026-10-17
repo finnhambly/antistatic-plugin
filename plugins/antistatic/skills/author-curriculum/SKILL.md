@@ -9,7 +9,7 @@ The rules are [RULES.md](https://antistatic.exchange/sandbox/rules.md), referred
 
 Building one:
 
-1. `antistatic_create_curriculum_draft` with a slug, a version (`1.0` for a first release) and a title. Every account can make one curriculum; more depend on the account's plan. It stays private to the user and the learners they add.
+1. `antistatic_create_curriculum_draft` with a slug, a version (`1.0` for a first release) and a title. New curricula are admin-only for now; for anyone else, say so and stop. It stays private to the user and the learners they add.
 2. `antistatic_add_checkpoint` for each point in time: an opaque key (T6), a title and a date. Several checkpoints may share a date; they keep the order added.
 3. `antistatic_add_question` for each question, in the compact format: a key, a title, `introduced_at`, a `market` (code, type, budget, resolution criteria, unit) and `curves` (bar keys, thresholds, opening probabilities `p0`, `closes_at`, `resolves_at`, outcomes). Word everything as of `introduced_at` (T4, T5, T7): what a well-informed person then would have asked, with criteria a named source settles (Q1) and opening probabilities from the evidence available then (Q4).
 4. `antistatic_add_disclosure` for evidence and results, each at the checkpoint where it became public (T1, T2, T3).

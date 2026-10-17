@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.24
+
+- Curriculum authoring: new curricula are admin-only for now.
+
 ## 0.3.23
 
 - Rarities read by runs: `1 in 23 runs go this well`, `3 in 10 runs go
