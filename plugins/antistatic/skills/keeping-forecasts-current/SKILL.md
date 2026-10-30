@@ -15,6 +15,7 @@ Comments:
 
 - Post evidence that adds something, even when the forecast doesn't move; read the thread first (`antistatic_get_comments`) and reply where there's already a thread. Skip routine updates and repeats.
 - Lean towards plain, concrete, self-contained sentences: what happened, who did it, the useful numbers, dates and source, with qualifications kept concrete. A short exact quote with a linked source and a sentence of context suits evidence: `"Relevant exact quote." — [Source: context that explains the finding](URL)`. Keep quotes short (about 25 words per source) and never pass a paraphrase off as a quote.
+- A link to a post on X, Mastodon, YouTube or Substack, alone on its own line, shows as a card with the post's text and images (or the video); the bare URL is enough.
 - Lean away from contrast framing ("This is not X"), announcing relevance ("This matters because"), rebutting misunderstandings nobody has, and lessons about forecasting. Stop once the facts and needed context are clear.
 - Reasoning about the forecast itself belongs in the conversation with the user, not in the comment.
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.27
+
+- Forecast drafts: `antistatic_stage_forecast` is now
+  `antistatic_upload_draft` (the old name still works). "Staging" is kept
+  for a market's house probabilities.
+
+## 0.3.26
+
+- Comments: a post link (X, Mastodon, YouTube, Substack) alone on its own
+  line shows as a card.
+
 ## 0.3.25
 
 - Wargame planning: any change to a run question's line moves its linked

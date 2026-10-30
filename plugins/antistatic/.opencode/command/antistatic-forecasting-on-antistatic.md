@@ -34,13 +34,13 @@ The user owns the forecast and makes the call. What usually helps most is asking
 
 Forecasting:
 
-1. Work out the change and quote it with `antistatic_quote` when cost matters. For most requests, don't compute bars: pass `targets` or a `shift` to quote, stage or submit, and the rest of the curve follows as when the user drags a bar on the site (same log-odds change, tapering towards the ends; bars between targets interpolated):
+1. Work out the change and quote it with `antistatic_quote` when cost matters. For most requests, don't compute bars: pass `targets` or a `shift` to quote, upload as a draft or submit, and the rest of the curve follows as when the user drags a bar on the site (same log-odds change, tapering towards the ends; bars between targets interpolated):
    - "make it 30% likely to be at least $5bn": `targets: [{curve: "2027-12-31", threshold: 5000000000, probability: 0.3}]`
    - "50% by mid-2028, 80% by 2032": `targets: [{threshold: "2028-06-30", probability: 0.5}, {threshold: "2032-12-31", probability: 0.8}]`
    - "move my 2027 median ~10% higher": `shift: {curve: "2027-12-31", quantile: 0.5, by: "+10%"}` (`by` is days on when-curves; or `to` a value)
    Use `updates` (exact bars by submarket ref) when the user names specific bars.
-2. Submitting changes the user's forecast and points; staging leaves the change for them to review on the site.
-3. Submit with `antistatic_submit_forecast`, or stage it for review on the site with `antistatic_stage_forecast`. To show a forecast without saving anything, use `antistatic_preview_forecast`: its `draft_url` opens it on the site as an unsaved draft.
+2. Submitting changes the user's forecast and points; a draft leaves the change for them to review and submit on the site.
+3. Submit with `antistatic_submit_forecast`, or upload it as a draft to review and submit on the site with `antistatic_upload_draft`. To show a forecast without saving anything, use `antistatic_preview_forecast`: its `draft_url` opens it on the site as an unsaved draft.
 4. Bars on a curve must stay in order. If a forecast is refused as out of order, fix the values, or resend with `rest_of_curve: "keep_in_order"` (other bars move only as far as needed) or `"interpolate"` (bars between the user's sit on a straight line). Say which you used.
 5. `antistatic_my_points` shows what the user wins or loses under each outcome.
 

@@ -8,8 +8,8 @@ conversation with Claude or ChatGPT.
 - Ask what a market says and see it as a chart: the house line forecasts are
   priced against, the crowd's forecast, and your own.
 - See what you would win or lose under each outcome.
-- Forecast, or stage a forecast to review on the site, with checks that keep
-  each curve in order.
+- Forecast, or upload a draft to review and submit on the site, with checks
+  that keep each curve in order.
 - Read and post evidence in a market's comments.
 - Create private markets: describe the question, and the starting
   probabilities are fitted from the base rates you give. Edit and resolve
