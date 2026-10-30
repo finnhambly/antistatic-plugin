@@ -13,7 +13,7 @@ Charts: tools with a chart (`antistatic_show_market`, `antistatic_show_markets`,
 Reading a market:
 
 1. Find it with `antistatic_search_markets`, then call `antistatic_show_market`. Quote the house line (starting probability) as the market's number; the crowd (community probability) is context, and the user's own forecast appears when they are signed in.
-2. Check each curve's status before quoting it. Resolved curves are settled: say how they resolved, not their old odds. A period that has ended but isn't resolved still takes forecasts, with nothing at stake.
+2. Check each curve's status before quoting it. Resolved curves are settled: say how they resolved, not their old odds. A period that has ended but isn't resolved is closed to forecasts until it resolves.
 3. For the bars of one curve, and the submarket refs needed to forecast, call `antistatic_show_market` with `curve`.
 
 Helping the user think it through:

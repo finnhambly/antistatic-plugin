@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.28
+
+- A count period that has ended is closed to forecasts until it resolves
+  (nothing was at stake there).
+
 ## 0.3.27
 
 - Forecast drafts: `antistatic_stage_forecast` is now
